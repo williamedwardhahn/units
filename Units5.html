@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Physics Dimensions Explorer</title>
+<style>
+  :root {
+    --bg: #f9fafb;
+    --card-bg: #fff;
+    --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    --radius: 16px;
+    --L: #0078ff;
+    --T: #2ecc71;
+    --M: #f39c12;
+    --I: #9b59b6;
+    --Θ: #e74c3c;
+    --N: #16a085;
+    --J: #e67e22;
+  }
+
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    background: var(--bg);
+    color: #222;
+    margin: 0;
+    padding: 1.5rem;
+    line-height: 1.6;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  p.subtitle {
+    color: #555;
+    font-size: 1.1rem;
+  }
+
+  section {
+    margin: 2rem auto;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    max-width: 1000px;
+  }
+
+  section h2 {
+    text-align: center;
+    margin-top: 0;
+    color: #111;
+  }
+
+  section p.intro {
+    text-align: center;
+    color: #555;
+    font-style: italic;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+
+  th, td {
+    padding: 0.6rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+  }
+
+  th {
+    background: #f0f0f0;
+    font-weight: bold;
+  }
+
+  tr:hover td {
+    background: #f5faff;
+  }
+
+  td.name {
+    text-align: left;
+    font-weight: 500;
+  }
+
+  /* Color codes for base quantities */
+  .M { color: var(--M); font-weight: bold; }
+  .L { color: var(--L); font-weight: bold; }
+  .T { color: var(--T); font-weight: bold; }
+  .I { color: var(--I); font-weight: bold; }
+  .Θ { color: var(--Θ); font-weight: bold; }
+  .N { color: var(--N); font-weight: bold; }
+  .J { color: var(--J); font-weight: bold; }
+
+  footer {
+    margin-top: 2rem;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 700px) {
+    table { font-size: 0.85rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Physics Dimensions Explorer</h1>
+  <p class="subtitle">How all physical quantities are built from seven fundamental units.</p>
+</header>
+
+<!-- ================== BASE UNITS ================== -->
+<section>
+  <h2>1. Base Units</h2>
+  <p class="intro">
+    These seven quantities form the foundation of all physical measurement. Every other quantity is a combination of these.
+  </p>
+  <table>
+    <tr>
+      <th>Quantity</th>
+      <th class="M">M</th>
+      <th class="L">L</th>
+      <th class="T">T</th>
+      <th class="I">I</th>
+      <th class="Θ">Θ</th>
+      <th class="N">N</th>
+      <th class="J">J</th>
+    </tr>
+    <tr><td class="name">Mass (kilogram)</td><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Length (meter)</td><td></td><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Time (second)</td><td></td><td></td><td>1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Electric Current (ampere)</td><td></td><td></td><td></td><td>1</td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Temperature (kelvin)</td><td></td><td></td><td></td><td></td><td>1</td><td></td><td></td></tr>
+    <tr><td class="name">Amount of Substance (mole)</td><td></td><td></td><td></td><td></td><td></td><td>1</td><td></td></tr>
+    <tr><td class="name">Luminous Intensity (candela)</td><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+  </table>
+</section>
+
+<!-- ================== MECHANICS ================== -->
+<section>
+  <h2>2. Mechanics</h2>
+  <p class="intro">
+    Mechanics describes motion, forces, and energy. Notice how each concept builds by adding or subtracting <span class="L">L</span>, <span class="T">T</span>, and <span class="M">M</span>.
+  </p>
+  <table>
+    <tr>
+      <th>Quantity</th><th class="M">M</th><th class="L">L</th><th class="T">T</th><th class="I">I</th><th class="Θ">Θ</th><th class="N">N</th><th class="J">J</th>
+    </tr>
+    <tr><td class="name">Speed (m/s)</td><td></td><td>1</td><td>-1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Acceleration (m/s²)</td><td></td><td>1</td><td>-2</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Momentum (kg·m/s)</td><td>1</td><td>1</td><td>-1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Force (N = kg·m/s²)</td><td>1</td><td>1</td><td>-2</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Energy / Work (J = N·m)</td><td>1</td><td>2</td><td>-2</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Power (W = J/s)</td><td>1</td><td>2</td><td>-3</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Pressure (Pa = N/m²)</td><td>1</td><td>-1</td><td>-2</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Density (ρ = m/V)</td><td>1</td><td>-3</td><td></td><td></td><td></td><td></td><td></td></tr>
+  </table>
+</section>
+
+<!-- ================== THERMODYNAMICS ================== -->
+<section>
+  <h2>3. Thermodynamics</h2>
+  <p class="intro">
+    Heat and temperature connect energy and the thermal motion of matter. Temperature adds the <span class="Θ">Θ</span> dimension.
+  </p>
+  <table>
+    <tr><th>Quantity</th><th class="M">M</th><th class="L">L</th><th class="T">T</th><th class="I">I</th><th class="Θ">Θ</th><th class="N">N</th><th class="J">J</th></tr>
+    <tr><td class="name">Specific Heat Capacity (J·kg⁻¹·K⁻¹)</td><td>0</td><td>2</td><td>-2</td><td></td><td>-1</td><td></td><td></td></tr>
+    <tr><td class="name">Thermal Conductivity (W·m⁻¹·K⁻¹)</td><td>1</td><td>1</td><td>-3</td><td></td><td>-1</td><td></td><td></td></tr>
+    <tr><td class="name">Entropy (J/K)</td><td>1</td><td>2</td><td>-2</td><td></td><td>-1</td><td></td><td></td></tr>
+  </table>
+</section>
+
+<!-- ================== ELECTROMAGNETISM ================== -->
+<section>
+  <h2>4. Electromagnetism</h2>
+  <p class="intro">
+    Electric and magnetic quantities extend the system with <span class="I">I</span> — the dimension of current.
+  </p>
+  <table>
+    <tr><th>Quantity</th><th class="M">M</th><th class="L">L</th><th class="T">T</th><th class="I">I</th><th class="Θ">Θ</th><th class="N">N</th><th class="J">J</th></tr>
+    <tr><td class="name">Charge (C = A·s)</td><td></td><td></td><td>1</td><td>1</td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Voltage (V = J/C)</td><td>1</td><td>2</td><td>-3</td><td>-1</td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Resistance (Ω = V/A)</td><td>1</td><td>2</td><td>-3</td><td>-2</td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Capacitance (F = C/V)</td><td>-1</td><td>-2</td><td>4</td><td>2</td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Inductance (H = V·s/A)</td><td>1</td><td>2</td><td>-2</td><td>-2</td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Magnetic Flux (Wb = V·s)</td><td>1</td><td>2</td><td>-2</td><td>-1</td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Magnetic Field (T = Wb/m²)</td><td>1</td><td>0</td><td>-2</td><td>-1</td><td></td><td></td><td></td></tr>
+  </table>
+</section>
+
+<!-- ================== OPTICS ================== -->
+<section>
+  <h2>5. Optics & Radiation</h2>
+  <p class="intro">
+    Light, waves, and radiation connect time, length, and luminous intensity <span class="J">J</span>.
+  </p>
+  <table>
+    <tr><th>Quantity</th><th class="M">M</th><th class="L">L</th><th class="T">T</th><th class="I">I</th><th class="Θ">Θ</th><th class="N">N</th><th class="J">J</th></tr>
+    <tr><td class="name">Frequency (Hz)</td><td></td><td></td><td>-1</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Wavelength (m)</td><td></td><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class="name">Illuminance (lx)</td><td></td><td>0</td><td>-3</td><td></td><td></td><td></td><td>1</td></tr>
+  </table>
+</section>
+
+<footer>
+  <p><span class="M">M</span> = Mass, <span class="L">L</span> = Length, <span class="T">T</span> = Time, 
+     <span class="I">I</span> = Electric Current, <span class="Θ">Θ</span> = Temperature, 
+     <span class="N">N</span> = Amount of Substance, <span class="J">J</span> = Luminous Intensity.</p>
+</footer>
+</body>
+</html>
+

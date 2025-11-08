@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Physics Units & Dimensions</title>
+<style>
+  :root {
+    --bg: #f9fafb;
+    --card-bg: #fff;
+    --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    --radius: 16px;
+
+    --L: #0078ff;   /* Length (meter) */
+    --T: #2ecc71;   /* Time (second) */
+    --M: #f39c12;   /* Mass (kilogram) */
+  }
+
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    background: var(--bg);
+    color: #222;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+  }
+
+  header {
+    padding: 2rem 1rem 1rem;
+  }
+
+  header h1 { margin: 0; font-size: 2rem; }
+  header p { color: #555; }
+
+  #card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    margin: 1rem;
+    max-width: 480px;
+    width: 90%;
+    transition: all 0.3s ease;
+  }
+
+  .unit {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+
+  footer {
+    margin-top: auto;
+    padding: 1rem;
+    color: #666;
+  }
+
+  .controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    background: #0078ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  button:hover { background: #005fcc; }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* Color classes for dimensions */
+  .L { color: var(--L); font-weight: bold; }
+  .T { color: var(--T); font-weight: bold; }
+  .M { color: var(--M); font-weight: bold; }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.5rem; }
+    #card { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Physics Units & Dimensions</h1>
+    <p>Build up physical quantities step by step.</p>
+  </header>
+
+  <main>
+    <div id="card"></div>
+
+    <div class="controls">
+      <button id="prev">◀ Previous</button>
+      <button id="next">Next ▶</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>Made with ❤️ for science learning</p>
+  </footer>
+
+<script>
+const cards = [
+  {
+    name: "Meter (m)",
+    definition: "The distance light travels in 1/299,792,458 of a second.",
+    category: "Base Unit",
+    dimension: "<span class='L'>Length [L]</span>"
+  },
+  {
+    name: "Second (s)",
+    definition: "Defined by 9,192,631,770 oscillations of the cesium-133 atom.",
+    category: "Base Unit",
+    dimension: "<span class='T'>Time [T]</span>"
+  },
+  {
+    name: "Kilogram (kg)",
+    definition: "Defined via the Planck constant: h = 6.62607015×10⁻³⁴ J·s.",
+    category: "Base Unit",
+    dimension: "<span class='M'>Mass [M]</span>"
+  },
+  {
+    name: "Speed (m/s)",
+    definition: "Rate of change of position with time.",
+    category: "Derived Unit",
+    dimension: "<span class='L'>L</span> <span class='T'>T⁻¹</span>"
+  },
+  {
+    name: "Acceleration (m/s²)",
+    definition: "Rate of change of speed with time.",
+    category: "Derived Unit",
+    dimension: "<span class='L'>L</span> <span class='T'>T⁻²</span>"
+  },
+  {
+    name: "Momentum (kg·m/s)",
+    definition: "Product of mass and velocity.",
+    category: "Derived Unit",
+    dimension: "<span class='M'>M</span> <span class='L'>L</span> <span class='T'>T⁻¹</span>"
+  },
+  {
+    name: "Force (N = kg·m/s²)",
+    definition: "Rate of change of momentum, or mass times acceleration.",
+    category: "Derived Unit",
+    dimension: "<span class='M'>M</span> <span class='L'>L</span> <span class='T'>T⁻²</span>"
+  },
+  {
+    name: "Energy (J = N·m)",
+    definition: "Capacity to do work. 1 joule = 1 newton meter.",
+    category: "Derived Unit",
+    dimension: "<span class='M'>M</span> <span class='L'>L²</span> <span class='T'>T⁻²</span>"
+  },
+  {
+    name: "Power (W = J/s)",
+    definition: "Rate of energy transfer per unit time.",
+    category: "Derived Unit",
+    dimension: "<span class='M'>M</span> <span class='L'>L²</span> <span class='T'>T⁻³</span>"
+  }
+];
+
+let index = 0;
+const cardEl = document.getElementById("card");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
+
+function showCard(i) {
+  const c = cards[i];
+  cardEl.innerHTML = `
+    <h2>${c.name}</h2>
+    <p><strong>${c.category}</strong></p>
+    <p>${c.definition}</p>
+    <p class="unit">Dimension: ${c.dimension}</p>
+  `;
+  prevBtn.disabled = i === 0;
+  nextBtn.disabled = i === cards.length - 1;
+}
+
+nextBtn.addEventListener("click", () => {
+  if (index < cards.length - 1) index++;
+  showCard(index);
+});
+
+prevBtn.addEventListener("click", () => {
+  if (index > 0) index--;
+  showCard(index);
+});
+
+showCard(index);
+</script>
+</body>
+</html>
+
